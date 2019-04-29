@@ -1,0 +1,77 @@
+
+package application;
+
+/**
+ * The BrainNLP class has two main functions:
+ * 1. Use NLP to determine the intent based on user input
+ * 2. Call the corresponding method to answer the intent
+ * For example, if a user asks, "What week are we in?" then
+ * the NLP needs to derive an intent such as "current week info"
+ * and then call a corresponding method (e.g., currentWeekInfo)
+ * to answer the question.
+ * We need to research NLP tools to figure out how to implement
+ * such functionality.
+ *  
+ * @author Melanie Fox, Peter Brice, Jason Baker 
+ *
+ */
+public class BrainNLP {
+	
+	/**
+	 *
+	 *1. Takes in user input
+	 *2. figures out what they want (analyticsNLP?)
+	 *3. If it can't help: redirects user to rephrase
+	 *4. If it can, returns the requested data
+	 *
+	 * textParser identifies what information the user is seeking based on the user input.
+	 * We need to learn more about NLP before knowing if we should make an "Intent" class.
+	 * This method returns a String with the specific data that is required from the Syllabus
+	 * @param userInput
+	 * @return intent
+	 */
+	public String textParser(String userInput) {
+		
+		String intent = "We need to learn more about NLP to know if this is the best design.";
+		return intent;
+	}
+	
+	/**
+	 * 1. takes in 
+	 * This method may be needed to analyze the intent of the user's statement
+	 * This method may not be necessary
+	 * @param intent
+	 */
+	public void analyticsNLP(String intent) {
+		//TODO: Write language processing 
+		//
+		 
+	}
+
+	/**
+	 * THis method is called within BrainNLP and returns requested data
+	 * This method uses the intent of the user's question to get the appropriate data and
+	 * create the text to be given back to the user.
+	 * @param usersIntent
+	 * @return response
+	 */
+	public String responseToUser(String usersIntent) {
+		
+		String responseToUser = "Hi User: Here's the information you requested.";
+		return responseToUser;
+	}
+	
+	
+	public String responseCantDoIt(Boolean cantFind) {
+		String sorry = "Sorry, try again";
+		return sorry;
+	}
+	
+	public boolean questionIsEmpty(String userInput) {
+		//Return true if userInput is empty
+		//For example, they hit enter without first typing a question
+		return userInput.isEmpty();
+	}
+	
+
+}
