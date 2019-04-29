@@ -1,0 +1,112 @@
+/**
+ * this is a new main method that would replace SyllabusChatbotRunner.java file
+ * it also makes the UserInterface.java class unnecessary
+ * This uses JavaFX to create a very primitive (but functional) UI
+ * that
+ * 1) takes in the user's Name
+ * 2) asks them to press a button to select the course they want info on
+ * this would then call to the syllabus class and build a syllabus
+ * 3) asks the user what question they want to ask then sends that as a string to the NLP
+ * 4) asks the user if they need anything else, and loops through again if they do, else exits.
+ */
+package application;
+	
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+
+
+public class Main extends Application {
+	Scene first, second, third, fourth;
+	final Button course1 = new Button("ECO101");
+	final Button course2 = new Button("Stats");
+	final Button course3 = new Button("That Ed course");
+	Label message1, message2, message3;
+	TextField userNameEntry;
+	String userName;
+
+	@Override
+	public void start(Stage primaryStage) {
+		
+		
+		
+		
+		primaryStage.setTitle("Chat with your TA");
+		message1=new Label("Hi, this is James. Who am I speaking with today?"); 
+		userNameEntry = new TextField();
+		
+		
+		//first screen
+		VBox layout1 = new VBox(20);
+		layout1.getChildren().addAll(message1, userNameEntry);		//creates the first scene
+		userNameEntry.setOnAction(e ->{//when user hits return, does this:
+			//TODO: add functionality if user enters invalid entry (not a name, blank, etc)
+			userName=userNameEntry.getText();
+			
+			primaryStage.setScene(second);
+		});
+		//when the user hits enter, this event triggers calling the method dealWIthUserName
+		Scene first = new Scene(layout1, 300, 200);
+		primaryStage.setScene(first);
+		
+		primaryStage.show();
+	
+		
+		//secondscreen
+		VBox layout2 = new VBox(20);
+		message2=new Label("Hi, "+userName +". What course can I help you with today? (Please click one)");
+		//TODO: figure out how to pass functionality of user name to this message
+		//note to melanie from herself: use a method!!!
+		layout2.getChildren().addAll(message2, course1, course2, course3);
+		course1.setOnAction(e ->{
+			//TODO: link to course 1 constructor
+			primaryStage.setScene(third);//make this a method that can be called in any of the choices
+			
+		});
+		//when the user hits enter, this event triggers calling the method dealWIthUserName
+		second = new Scene(layout2, 300, 200);
+		
+		//third scene
+		VBox layout3 = new VBox(20);
+		message3=new Label("What question about that course did you have today?");
+		//TODO: figure out how to pass functionality of user name to this message
+		
+		
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		launch(args);//this goes into Main and sets everything up as a JavaFX application. 
+		//Application calls a method called start
+	}
+
+	
+	public void dealWithSyllabus() {
+		//TODO: return an object of type Syllabus
+		//NOTE: We can use ineheritance to create a Super class of syllabi
+		//then subclasses for individual syllabi? this would enable syllabi to have different information
+		
+	}
+	public String dealWithNLP() {
+		//TODO: write something that sends a string to the NLP and returns a string
+		return "You are in week 13";//placeholder answer to user's question
+		//note to me: can be called with this.dealWithNLP
+	}
+	
+		
+	
+
+	 
+}
